@@ -1,5 +1,6 @@
 import { ASAAS_BASE_URL, DEFAULT_ENV, type AsaasEnvironment } from '../constants/index.js';
 import { HttpClient } from '../http/HttpClient.js';
+import { AnticipationService } from '../services/anticipation.service.js';
 import { CustomerService } from '../services/customer.service.js';
 import { InstallmentService } from '../services/installment.service.js';
 import { NotificationService } from '../services/notification.service.js';
@@ -40,9 +41,10 @@ function getBaseUrl(config?: AsaasClientConfig): string {
  */
 export class AsaasClient {
   private readonly http: HttpClient;
+  readonly anticipations: AnticipationService;
   readonly customers: CustomerService;
-  readonly payments: PaymentService;
   readonly installments: InstallmentService;
+  readonly payments: PaymentService;
   readonly notifications: NotificationService;
   readonly paymentLinks: PaymentLinkService;
   readonly subscriptions: SubscriptionService;
@@ -52,9 +54,10 @@ export class AsaasClient {
     const apiKey = getApiKey(config);
     const baseUrl = getBaseUrl(config);
     this.http = new HttpClient({ baseUrl, apiKey });
+    this.anticipations = new AnticipationService(this.http);
     this.customers = new CustomerService(this.http);
-    this.payments = new PaymentService(this.http);
     this.installments = new InstallmentService(this.http);
+    this.payments = new PaymentService(this.http);
     this.notifications = new NotificationService(this.http);
     this.paymentLinks = new PaymentLinkService(this.http);
     this.subscriptions = new SubscriptionService(this.http);

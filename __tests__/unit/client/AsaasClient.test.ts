@@ -17,9 +17,10 @@ describe('AsaasClient', () => {
   describe('constructor with config', () => {
     it('uses apiKey from config', () => {
       const client = new AsaasClient({ apiKey: 'key_from_config', environment: 'sandbox' });
+      expect(client.anticipations).toBeDefined();
       expect(client.customers).toBeDefined();
-      expect(client.payments).toBeDefined();
       expect(client.installments).toBeDefined();
+      expect(client.payments).toBeDefined();
       expect(client.notifications).toBeDefined();
       expect(client.paymentLinks).toBeDefined();
       expect(client.subscriptions).toBeDefined();

@@ -112,6 +112,7 @@ Esta seção é atualizada conforme novos serviços são implementados.
 |--------|------------------|--------------------|
 | **Clientes** | `asaas.customers` | `create`, `getById`, `list`, `update`, `delete`, `restore` |
 | **Cobranças** | `asaas.payments` | `create`, `getById`, `list`, `update`, `delete`, `restore`, `refund`, `getDigitableLine`, `getPixQrCode`, `receiveInCash`, `undoReceivedInCash` |
+| **Antecipações** | `asaas.anticipations` | `simulate`, `create`, `getById`, `list` |
 | **Parcelamentos** | `asaas.installments` | `getById`, `list`, `delete`, `refund` |
 | **Notificações** | `asaas.notifications` | `update` |
 | **Assinaturas** | `asaas.subscriptions` | `create`, `getById`, `list`, `listPayments`, `update`, `delete`, `createInvoiceSettings`, `getInvoiceSettings`, `updateInvoiceSettings`, `deleteInvoiceSettings` |
@@ -120,7 +121,6 @@ Esta seção é atualizada conforme novos serviços são implementados.
 
 ### 📋 Planejados (futuros)
 
-- Antecipações
 - Webhook (cobrança e notas fiscais)
 - Recuperações (negativações)
 - Pagamento de contas
