@@ -77,3 +77,41 @@ export interface ListSubscriptionsParams {
   includeDeleted?: boolean;
   externalReference?: string;
 }
+
+/** Impostos da configuração de NF para assinatura */
+export interface SubscriptionInvoiceTaxes {
+  retainIss?: boolean;
+  iss?: number;
+  cofins?: number;
+  csll?: number;
+  inss?: number;
+  ir?: number;
+  pis?: number;
+}
+
+/** Payload para criar/atualizar configuração de NF da assinatura */
+export interface SubscriptionInvoiceSettingsRequest {
+  municipalServiceId?: number | null;
+  municipalServiceCode?: string;
+  municipalServiceName?: string;
+  deductions?: number;
+  taxes?: SubscriptionInvoiceTaxes;
+  effectiveDatePeriod?: 'ON_PAYMENT_CONFIRMATION' | 'ON_PAYMENT_DUE_DATE';
+  daysBeforeDueDate?: number | null;
+  receivedOnly?: boolean | null;
+  observations?: string;
+}
+
+/** Configuração de NF da assinatura retornada pela API */
+export interface SubscriptionInvoiceSettings {
+  municipalServiceId?: number | null;
+  municipalServiceCode?: string;
+  municipalServiceName?: string;
+  deductions?: number;
+  taxes?: SubscriptionInvoiceTaxes;
+  effectiveDatePeriod?: string;
+  daysBeforeDueDate?: number | null;
+  receivedOnly?: boolean | null;
+  observations?: string;
+  [key: string]: unknown;
+}

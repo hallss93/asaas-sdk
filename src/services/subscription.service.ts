@@ -5,6 +5,8 @@ import type {
   CreateSubscriptionRequest,
   ListSubscriptionsParams,
   Subscription,
+  SubscriptionInvoiceSettings,
+  SubscriptionInvoiceSettingsRequest,
   UpdateSubscriptionRequest,
 } from '../types/subscription.js';
 
@@ -43,5 +45,41 @@ export class SubscriptionService extends BaseService {
   /** Remover assinatura */
   async delete(id: string): Promise<Subscription> {
     return this.http.delete<Subscription>(this.path(id));
+  }
+
+  /** Criar configuração para emissão de notas fiscais da assinatura */
+  async createInvoiceSettings(
+    subscriptionId: string,
+    data: SubscriptionInvoiceSettingsRequest
+  ): Promise<SubscriptionInvoiceSettings> {
+    return this.http.post<SubscriptionInvoiceSettings>(
+      this.path(`${subscriptionId}/invoiceSettings`),
+      data
+    );
+  }
+
+  /** Recuperar configuração para emissão de notas fiscais da assinatura */
+  async getInvoiceSettings(subscriptionId: string): Promise<SubscriptionInvoiceSettings> {
+    return this.http.get<SubscriptionInvoiceSettings>(
+      this.path(`${subscriptionId}/invoiceSettings`)
+    );
+  }
+
+  /** Atualizar configuração para emissão de notas fiscais (API usa POST) */
+  async updateInvoiceSettings(
+    subscriptionId: string,
+    data: SubscriptionInvoiceSettingsRequest
+  ): Promise<SubscriptionInvoiceSettings> {
+    return this.http.post<SubscriptionInvoiceSettings>(
+      this.path(`${subscriptionId}/invoiceSettings`),
+      data
+    );
+  }
+
+  /** Remover configuração para emissão de notas fiscais da assinatura */
+  async deleteInvoiceSettings(subscriptionId: string): Promise<SubscriptionInvoiceSettings> {
+    return this.http.delete<SubscriptionInvoiceSettings>(
+      this.path(`${subscriptionId}/invoiceSettings`)
+    );
   }
 }

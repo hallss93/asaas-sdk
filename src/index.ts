@@ -47,4 +47,7 @@ export type {
   Subscription,
   ListSubscriptionsParams,
   SubscriptionCycle,
+  SubscriptionInvoiceSettings,
+  SubscriptionInvoiceSettingsRequest,
+  SubscriptionInvoiceTaxes,
 } from './types/subscription.js';

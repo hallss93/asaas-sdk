@@ -101,4 +101,51 @@ describe('SubscriptionService', () => {
       expect.objectContaining({ method: 'DELETE' })
     );
   });
+
+  describe('invoiceSettings', () => {
+    it('createInvoiceSettings sends POST to /api/v3/subscriptions/:id/invoiceSettings', async () => {
+      const data = {
+        municipalServiceCode: '1.01',
+        municipalServiceName: 'Desenvolvimento de sistemas',
+        observations: 'Ref. Junho',
+      };
+      fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(data), { status: 200 }));
+      const result = await service.createInvoiceSettings('sub_1', data);
+      expect(result.municipalServiceCode).toBe('1.01');
+      expect(fetchMock).toHaveBeenCalledWith(
+        expect.stringContaining('/api/v3/subscriptions/sub_1/invoiceSettings'),
+        expect.objectContaining({ method: 'POST', body: JSON.stringify(data) })
+      );
+    });
+
+    it('getInvoiceSettings sends GET to /api/v3/subscriptions/:id/invoiceSettings', async () => {
+      const settings = { municipalServiceCode: '1.01' };
+      fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(settings), { status: 200 }));
+      const result = await service.getInvoiceSettings('sub_1');
+      expect(result.municipalServiceCode).toBe('1.01');
+      expect(fetchMock).toHaveBeenCalledWith(
+        expect.stringContaining('/api/v3/subscriptions/sub_1/invoiceSettings'),
+        expect.any(Object)
+      );
+    });
+
+    it('updateInvoiceSettings sends POST to /api/v3/subscriptions/:id/invoiceSettings', async () => {
+      const data = { observations: 'Atualizado' };
+      fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(data), { status: 200 }));
+      await service.updateInvoiceSettings('sub_1', data);
+      expect(fetchMock).toHaveBeenCalledWith(
+        expect.stringContaining('/api/v3/subscriptions/sub_1/invoiceSettings'),
+        expect.objectContaining({ method: 'POST', body: JSON.stringify(data) })
+      );
+    });
+
+    it('deleteInvoiceSettings sends DELETE to /api/v3/subscriptions/:id/invoiceSettings', async () => {
+      fetchMock.mockResolvedValueOnce(new Response(JSON.stringify({}), { status: 200 }));
+      await service.deleteInvoiceSettings('sub_1');
+      expect(fetchMock).toHaveBeenCalledWith(
+        expect.stringContaining('/api/v3/subscriptions/sub_1/invoiceSettings'),
+        expect.objectContaining({ method: 'DELETE' })
+      );
+    });
+  });
 });
