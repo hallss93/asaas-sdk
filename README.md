@@ -115,11 +115,11 @@ Esta seção é atualizada conforme novos serviços são implementados.
 | **Parcelamentos** | `asaas.installments` | `getById`, `list`, `delete`, `refund` |
 | **Notificações** | `asaas.notifications` | `update` |
 | **Assinaturas** | `asaas.subscriptions` | `create`, `getById`, `list`, `listPayments`, `update`, `delete`, `createInvoiceSettings`, `getInvoiceSettings`, `updateInvoiceSettings`, `deleteInvoiceSettings` |
+| **Transferências** | `asaas.transfers` | `createToBank`, `createToAsaas`, `getById`, `list` |
 | **Links de pagamento** | `asaas.paymentLinks` | `create`, `getById`, `list`, `update`, `delete`, `restore`, `addImage`, `listImages`, `getImage`, `deleteImage`, `setImageAsMain` |
 
 ### 📋 Planejados (futuros)
 
-- Transferências
 - Antecipações
 - Webhook (cobrança e notas fiscais)
 - Recuperações (negativações)

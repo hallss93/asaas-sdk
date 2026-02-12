@@ -12,6 +12,7 @@ export { NotificationService } from './services/notification.service.js';
 export { PaymentLinkService } from './services/payment-link.service.js';
 export { PaymentService } from './services/payment.service.js';
 export { SubscriptionService } from './services/subscription.service.js';
+export { TransferService } from './services/transfer.service.js';
 export {
   ASAAS_BASE_URL,
   DEFAULT_ENV,
@@ -54,3 +55,11 @@ export type {
   SubscriptionInvoiceSettingsRequest,
   SubscriptionInvoiceTaxes,
 } from './types/subscription.js';
+export type {
+  CreateTransferToBankRequest,
+  CreateTransferToAsaasRequest,
+  Transfer,
+  ListTransfersParams,
+  TransferBankAccount,
+  TransferBankInfo,
+} from './types/transfer.js';

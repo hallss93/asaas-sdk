@@ -23,6 +23,7 @@ describe('AsaasClient', () => {
       expect(client.notifications).toBeDefined();
       expect(client.paymentLinks).toBeDefined();
       expect(client.subscriptions).toBeDefined();
+      expect(client.transfers).toBeDefined();
     });
 
     it('uses environment production from config', () => {
