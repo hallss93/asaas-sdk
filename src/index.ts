@@ -7,7 +7,10 @@ export { AsaasClient } from './client/AsaasClient.js';
 export { AsaasApiError } from './errors/AsaasApiError.js';
 export { HttpClient } from './http/HttpClient.js';
 export { CustomerService } from './services/customer.service.js';
+export { InstallmentService } from './services/installment.service.js';
+export { PaymentLinkService } from './services/payment-link.service.js';
 export { PaymentService } from './services/payment.service.js';
+export { SubscriptionService } from './services/subscription.service.js';
 export {
   ASAAS_BASE_URL,
   DEFAULT_ENV,
@@ -22,6 +25,7 @@ export type {
   PaginatedResponse,
 } from './types/common.js';
 export type { CreateCustomerRequest, UpdateCustomerRequest, Customer } from './types/customer.js';
+export type { Installment, ListInstallmentsParams } from './types/installment.js';
 export type {
   CreatePaymentRequest,
   UpdatePaymentRequest,
@@ -30,3 +34,17 @@ export type {
   BillingType,
   PaymentStatus,
 } from './types/payment.js';
+export type {
+  CreatePaymentLinkRequest,
+  UpdatePaymentLinkRequest,
+  PaymentLink,
+  ListPaymentLinksParams,
+  PaymentLinkChargeType,
+} from './types/payment-link.js';
+export type {
+  CreateSubscriptionRequest,
+  UpdateSubscriptionRequest,
+  Subscription,
+  ListSubscriptionsParams,
+  SubscriptionCycle,
+} from './types/subscription.js';

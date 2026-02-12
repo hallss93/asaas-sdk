@@ -102,10 +102,37 @@ const asaas = new AsaasClient({
 });
 ```
 
-## Recursos disponíveis
+## Módulos
 
-- **Clientes**: `create`, `getById`, `list`, `update`, `delete`, `restore`
-- **Cobranças**: `create`, `getById`, `list`, `update`, `delete`, `restore`, `refund`, `getDigitableLine`, `getPixQrCode`, `receiveInCash`, `undoReceivedInCash`
+Esta seção é atualizada conforme novos serviços são implementados.
+
+### ✅ Prontos
+
+| Módulo | Acesso no client | Principais métodos |
+|--------|------------------|--------------------|
+| **Clientes** | `asaas.customers` | `create`, `getById`, `list`, `update`, `delete`, `restore` |
+| **Cobranças** | `asaas.payments` | `create`, `getById`, `list`, `update`, `delete`, `restore`, `refund`, `getDigitableLine`, `getPixQrCode`, `receiveInCash`, `undoReceivedInCash` |
+| **Parcelamentos** | `asaas.installments` | `getById`, `list`, `delete`, `refund` |
+| **Assinaturas** | `asaas.subscriptions` | `create`, `getById`, `list`, `listPayments`, `update`, `delete` |
+| **Links de pagamento** | `asaas.paymentLinks` | `create`, `getById`, `list`, `update`, `delete`, `restore` |
+
+### 📋 Planejados (futuros)
+
+- Notificações
+- Transferências
+- Antecipações
+- Webhook (cobrança e notas fiscais)
+- Recuperações (negativações)
+- Pagamento de contas
+- Consulta Serasa
+- Extrato
+- Informações da conta
+- Notas fiscais
+- Informações fiscais
+- Contas Asaas (subcontas)
+- Pix (chaves, QR Code estático)
+- Transações Pix
+- Outros recursos da API v3
 
 ## Erros
 
