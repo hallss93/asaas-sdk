@@ -2,6 +2,7 @@ import { ASAAS_BASE_URL, DEFAULT_ENV, type AsaasEnvironment } from '../constants
 import { HttpClient } from '../http/HttpClient.js';
 import { CustomerService } from '../services/customer.service.js';
 import { InstallmentService } from '../services/installment.service.js';
+import { NotificationService } from '../services/notification.service.js';
 import { PaymentLinkService } from '../services/payment-link.service.js';
 import { PaymentService } from '../services/payment.service.js';
 import { SubscriptionService } from '../services/subscription.service.js';
@@ -41,8 +42,9 @@ export class AsaasClient {
   readonly customers: CustomerService;
   readonly payments: PaymentService;
   readonly installments: InstallmentService;
-  readonly subscriptions: SubscriptionService;
+  readonly notifications: NotificationService;
   readonly paymentLinks: PaymentLinkService;
+  readonly subscriptions: SubscriptionService;
 
   constructor(config?: AsaasClientConfig) {
     const apiKey = getApiKey(config);
@@ -51,7 +53,8 @@ export class AsaasClient {
     this.customers = new CustomerService(this.http);
     this.payments = new PaymentService(this.http);
     this.installments = new InstallmentService(this.http);
-    this.subscriptions = new SubscriptionService(this.http);
+    this.notifications = new NotificationService(this.http);
     this.paymentLinks = new PaymentLinkService(this.http);
+    this.subscriptions = new SubscriptionService(this.http);
   }
 }

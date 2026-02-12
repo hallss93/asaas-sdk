@@ -3,4 +3,5 @@ export * from './customer';
 export * from './payment';
 export * from './installment';
 export * from './subscription';
+export * from './notification';
 export * from './payment-link';
