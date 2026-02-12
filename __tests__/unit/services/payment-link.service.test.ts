@@ -98,4 +98,68 @@ describe('PaymentLinkService', () => {
       expect.objectContaining({ method: 'POST' })
     );
   });
+
+  describe('images', () => {
+    it('addImage sends POST multipart to /api/v3/paymentLinks/:id/images', async () => {
+      const image = new Blob(['fake-image'], { type: 'image/png' });
+      fetchMock.mockResolvedValueOnce(
+        new Response(JSON.stringify({ id: 'img_1', main: true }), { status: 200 })
+      );
+      const result = await service.addImage('link_1', { main: true, image });
+      expect(result.id).toBe('img_1');
+      expect(fetchMock).toHaveBeenCalledWith(
+        expect.stringContaining('/api/v3/paymentLinks/link_1/images'),
+        expect.objectContaining({
+          method: 'POST',
+          body: expect.any(FormData),
+        })
+      );
+    });
+
+    it('listImages sends GET and returns data array', async () => {
+      fetchMock.mockResolvedValueOnce(
+        new Response(JSON.stringify({ data: [{ id: 'img_1' }] }), { status: 200 })
+      );
+      const result = await service.listImages('link_1');
+      expect(result).toHaveLength(1);
+      expect(result[0].id).toBe('img_1');
+      expect(fetchMock).toHaveBeenCalledWith(
+        expect.stringContaining('/api/v3/paymentLinks/link_1/images'),
+        expect.any(Object)
+      );
+    });
+
+    it('getImage sends GET to /api/v3/paymentLinks/:id/images/:imageId', async () => {
+      fetchMock.mockResolvedValueOnce(
+        new Response(JSON.stringify({ id: 'img_1', main: true }), { status: 200 })
+      );
+      const result = await service.getImage('link_1', 'img_1');
+      expect(result.id).toBe('img_1');
+      expect(fetchMock).toHaveBeenCalledWith(
+        expect.stringContaining('/api/v3/paymentLinks/link_1/images/img_1'),
+        expect.any(Object)
+      );
+    });
+
+    it('deleteImage sends DELETE to /api/v3/paymentLinks/:id/images/:imageId', async () => {
+      fetchMock.mockResolvedValueOnce(new Response(JSON.stringify({}), { status: 200 }));
+      await service.deleteImage('link_1', 'img_1');
+      expect(fetchMock).toHaveBeenCalledWith(
+        expect.stringContaining('/api/v3/paymentLinks/link_1/images/img_1'),
+        expect.objectContaining({ method: 'DELETE' })
+      );
+    });
+
+    it('setImageAsMain sends POST to setAsMain', async () => {
+      fetchMock.mockResolvedValueOnce(
+        new Response(JSON.stringify({ id: 'img_1', main: true }), { status: 200 })
+      );
+      const result = await service.setImageAsMain('link_1', 'img_1');
+      expect(result.main).toBe(true);
+      expect(fetchMock).toHaveBeenCalledWith(
+        expect.stringContaining('/api/v3/paymentLinks/link_1/images/img_1/setAsMain'),
+        expect.objectContaining({ method: 'POST' })
+      );
+    });
+  });
 });

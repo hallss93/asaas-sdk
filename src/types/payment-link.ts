@@ -53,3 +53,12 @@ export interface ListPaymentLinksParams {
   offset?: number;
   limit?: number;
 }
+
+/** Imagem de um link de pagamento retornada pela API */
+export interface PaymentLinkImage {
+  id: string;
+  dateCreated?: string;
+  main?: boolean;
+  imageUrl?: string;
+  [key: string]: unknown;
+}

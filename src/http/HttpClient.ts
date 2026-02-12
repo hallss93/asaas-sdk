@@ -21,11 +21,14 @@ export class HttpClient {
     }
   }
 
-  private getHeaders(): Record<string, string> {
-    return {
+  private getHeaders(omitContentType = false): Record<string, string> {
+    const headers: Record<string, string> = {
       [HEADER_ACCESS_TOKEN]: this.config.apiKey,
-      'Content-Type': 'application/json',
     };
+    if (!omitContentType) {
+      headers['Content-Type'] = 'application/json';
+    }
+    return headers;
   }
 
   private async handleResponse<T>(res: Response): Promise<T> {
@@ -94,6 +97,18 @@ export class HttpClient {
     const res = await fetch(pathWithBase, {
       method: 'DELETE',
       headers: this.getHeaders(),
+    });
+    return this.handleResponse<T>(res);
+  }
+
+  /** POST com multipart/form-data (ex.: upload de arquivo). Não define Content-Type para fetch definir o boundary. */
+  async postMultipart<T>(path: string, formData: FormData): Promise<T> {
+    const base = this.config.baseUrl.replace(/\/$/, '');
+    const pathWithBase = path.startsWith('/') ? `${base}${path}` : `${base}/${path}`;
+    const res = await fetch(pathWithBase, {
+      method: 'POST',
+      headers: this.getHeaders(true),
+      body: formData,
     });
     return this.handleResponse<T>(res);
   }

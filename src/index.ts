@@ -38,6 +38,7 @@ export type {
   CreatePaymentLinkRequest,
   UpdatePaymentLinkRequest,
   PaymentLink,
+  PaymentLinkImage,
   ListPaymentLinksParams,
   PaymentLinkChargeType,
 } from './types/payment-link.js';
