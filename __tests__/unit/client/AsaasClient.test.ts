@@ -25,6 +25,7 @@ describe('AsaasClient', () => {
       expect(client.paymentLinks).toBeDefined();
       expect(client.subscriptions).toBeDefined();
       expect(client.transfers).toBeDefined();
+      expect(client.webhooks).toBeDefined();
     });
 
     it('uses environment production from config', () => {

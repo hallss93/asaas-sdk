@@ -14,6 +14,7 @@ export { PaymentLinkService } from './services/payment-link.service.js';
 export { PaymentService } from './services/payment.service.js';
 export { SubscriptionService } from './services/subscription.service.js';
 export { TransferService } from './services/transfer.service.js';
+export { WebhookService } from './services/webhook.service.js';
 export {
   ASAAS_BASE_URL,
   DEFAULT_ENV,
@@ -70,3 +71,4 @@ export type {
   TransferBankAccount,
   TransferBankInfo,
 } from './types/transfer.js';
+export type { UpdateWebhookRequest, WebhookSettings } from './types/webhook.js';

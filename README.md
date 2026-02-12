@@ -117,11 +117,11 @@ Esta seção é atualizada conforme novos serviços são implementados.
 | **Notificações** | `asaas.notifications` | `update` |
 | **Assinaturas** | `asaas.subscriptions` | `create`, `getById`, `list`, `listPayments`, `update`, `delete`, `createInvoiceSettings`, `getInvoiceSettings`, `updateInvoiceSettings`, `deleteInvoiceSettings` |
 | **Transferências** | `asaas.transfers` | `createToBank`, `createToAsaas`, `getById`, `list` |
+| **Webhooks** | `asaas.webhooks` | `getPayment`, `updatePayment`, `getInvoice`, `updateInvoice` |
 | **Links de pagamento** | `asaas.paymentLinks` | `create`, `getById`, `list`, `update`, `delete`, `restore`, `addImage`, `listImages`, `getImage`, `deleteImage`, `setImageAsMain` |
 
 ### 📋 Planejados (futuros)
 
-- Webhook (cobrança e notas fiscais)
 - Recuperações (negativações)
 - Pagamento de contas
 - Consulta Serasa

@@ -8,6 +8,7 @@ import { PaymentLinkService } from '../services/payment-link.service.js';
 import { PaymentService } from '../services/payment.service.js';
 import { SubscriptionService } from '../services/subscription.service.js';
 import { TransferService } from '../services/transfer.service.js';
+import { WebhookService } from '../services/webhook.service.js';
 import type { AsaasClientConfig } from '../types/common.js';
 
 function getApiKey(config?: AsaasClientConfig): string {
@@ -49,6 +50,7 @@ export class AsaasClient {
   readonly paymentLinks: PaymentLinkService;
   readonly subscriptions: SubscriptionService;
   readonly transfers: TransferService;
+  readonly webhooks: WebhookService;
 
   constructor(config?: AsaasClientConfig) {
     const apiKey = getApiKey(config);
@@ -62,5 +64,6 @@ export class AsaasClient {
     this.paymentLinks = new PaymentLinkService(this.http);
     this.subscriptions = new SubscriptionService(this.http);
     this.transfers = new TransferService(this.http);
+    this.webhooks = new WebhookService(this.http);
   }
 }

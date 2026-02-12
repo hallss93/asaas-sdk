@@ -5,5 +5,6 @@ export * from './installment';
 export * from './subscription';
 export * from './anticipation';
 export * from './transfer';
+export * from './webhook';
 export * from './notification';
 export * from './payment-link';
