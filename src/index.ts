@@ -6,6 +6,7 @@
 export { AsaasClient } from './client/AsaasClient.js';
 export { AsaasApiError } from './errors/AsaasApiError.js';
 export { HttpClient } from './http/HttpClient.js';
+export { AccountService } from './services/account.service.js';
 export { AnticipationService } from './services/anticipation.service.js';
 export { CustomerService } from './services/customer.service.js';
 export { InstallmentService } from './services/installment.service.js';
@@ -28,6 +29,14 @@ export type {
   PaginationParams,
   PaginatedResponse,
 } from './types/common.js';
+export type {
+  AccountFees,
+  CommercialInfo,
+  CommercialInfoExpiration,
+  UpdateCommercialInfoRequest,
+  Wallet,
+  WalletListResponse,
+} from './types/account.js';
 export type {
   Anticipation,
   CreateAnticipationRequest,

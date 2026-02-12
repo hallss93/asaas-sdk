@@ -119,6 +119,7 @@ Esta seção é atualizada conforme novos serviços são implementados.
 | **Transferências** | `asaas.transfers` | `createToBank`, `createToAsaas`, `getById`, `list` |
 | **Webhooks** | `asaas.webhooks` | `getPayment`, `updatePayment`, `getInvoice`, `updateInvoice` |
 | **Links de pagamento** | `asaas.paymentLinks` | `create`, `getById`, `list`, `update`, `delete`, `restore`, `addImage`, `listImages`, `getImage`, `deleteImage`, `setImageAsMain` |
+| **Informações da conta** | `asaas.account` | `getCommercialInfo`, `updateCommercialInfo`, `getFees`, `getWallets` |
 
 ### 📋 Planejados (futuros)
 
@@ -126,7 +127,6 @@ Esta seção é atualizada conforme novos serviços são implementados.
 - Pagamento de contas
 - Consulta Serasa
 - Extrato
-- Informações da conta
 - Notas fiscais
 - Informações fiscais
 - Contas Asaas (subcontas)
