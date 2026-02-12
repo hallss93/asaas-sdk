@@ -1,6 +1,6 @@
-# Asaas SDK
+# asaas-sdk-node
 
-SDK em Node.js para integração com a **API Asaas v3**. Funciona em **TypeScript** ou **JavaScript**, em projetos **Express**, **NestJS** ou qualquer aplicação Node.js.
+SDK em **Node.js** (TypeScript/JavaScript) para integração com a **API Asaas v3**. Uso em **Express**, **NestJS** ou qualquer app Node.
 
 - [Documentação Asaas](https://docs.asaas.com/reference/comece-por-aqui)
 - API Key em [Minha Conta > Integração](https://www.asaas.com/config/index?tab=pushNotification) (produção) ou [Sandbox](https://sandbox.asaas.com).
@@ -8,7 +8,7 @@ SDK em Node.js para integração com a **API Asaas v3**. Funciona em **TypeScrip
 ## Instalação
 
 ```bash
-npm install asaas-sdk
+npm install asaas-sdk-node
 ```
 
 ## Configuração
@@ -27,7 +27,7 @@ ASAAS_ENV=sandbox
 ### 2. Parâmetros na instância
 
 ```ts
-import { AsaasClient } from 'asaas-sdk';
+import { AsaasClient } from 'asaas-sdk-node';
 
 const client = new AsaasClient({
   apiKey: 'sua_chave_api',
@@ -46,7 +46,7 @@ const clientCustom = new AsaasClient({
 ### TypeScript / JavaScript (CommonJS)
 
 ```ts
-const { AsaasClient } = require('asaas-sdk');
+const { AsaasClient } = require('asaas-sdk-node');
 
 const asaas = new AsaasClient({ apiKey: process.env.ASAAS_API_KEY, environment: 'sandbox' });
 
@@ -73,7 +73,7 @@ const pixQr = await asaas.payments.getPixQrCode(payment.id);
 
 ```ts
 import express from 'express';
-import { AsaasClient } from 'asaas-sdk';
+import { AsaasClient } from 'asaas-sdk-node';
 
 const app = express();
 const asaas = new AsaasClient(); // usa ASAAS_API_KEY e ASAAS_ENV do env
@@ -93,7 +93,7 @@ app.post('/clientes', async (req, res) => {
 Injete o `AsaasClient` onde precisar (ex.: factory com `ConfigService`):
 
 ```ts
-import { AsaasClient } from 'asaas-sdk';
+import { AsaasClient } from 'asaas-sdk-node';
 
 // No módulo ou provider
 const asaas = new AsaasClient({
@@ -139,7 +139,7 @@ Esta seção é atualizada conforme novos serviços são implementados.
 Em falhas da API (4xx/5xx) é lançado `AsaasApiError` com `message`, `status` e `body` (quando houver):
 
 ```ts
-import { AsaasApiError } from 'asaas-sdk';
+import { AsaasApiError } from 'asaas-sdk-node';
 
 try {
   await asaas.payments.getById('id_invalido');
