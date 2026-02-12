@@ -13,6 +13,7 @@ export { InstallmentService } from './services/installment.service.js';
 export { NotificationService } from './services/notification.service.js';
 export { PaymentLinkService } from './services/payment-link.service.js';
 export { PaymentService } from './services/payment.service.js';
+export { PixService } from './services/pix.service.js';
 export { SubscriptionService } from './services/subscription.service.js';
 export { TransferService } from './services/transfer.service.js';
 export { WebhookService } from './services/webhook.service.js';
@@ -62,6 +63,14 @@ export type {
   ListPaymentLinksParams,
   PaymentLinkChargeType,
 } from './types/payment-link.js';
+export type {
+  CreatePixAddressKeyRequest,
+  CreateStaticPixQrCodeRequest,
+  ListPixAddressKeysParams,
+  PixAddressKey,
+  PixAddressKeyType,
+  StaticPixQrCode,
+} from './types/pix.js';
 export type {
   CreateSubscriptionRequest,
   UpdateSubscriptionRequest,

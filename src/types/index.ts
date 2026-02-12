@@ -9,3 +9,4 @@ export * from './transfer';
 export * from './webhook';
 export * from './notification';
 export * from './payment-link';
+export * from './pix';

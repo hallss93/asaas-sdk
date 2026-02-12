@@ -120,6 +120,7 @@ Esta seção é atualizada conforme novos serviços são implementados.
 | **Webhooks** | `asaas.webhooks` | `getPayment`, `updatePayment`, `getInvoice`, `updateInvoice` |
 | **Links de pagamento** | `asaas.paymentLinks` | `create`, `getById`, `list`, `update`, `delete`, `restore`, `addImage`, `listImages`, `getImage`, `deleteImage`, `setImageAsMain` |
 | **Informações da conta** | `asaas.account` | `getCommercialInfo`, `updateCommercialInfo`, `getFees`, `getWallets` |
+| **Pix (chaves, QR estático)** | `asaas.pix` | `createAddressKey`, `listAddressKeys`, `getAddressKeyById`, `deleteAddressKey`, `createStaticQrCode` |
 
 ### 📋 Planejados (futuros)
 
@@ -130,7 +131,6 @@ Esta seção é atualizada conforme novos serviços são implementados.
 - Notas fiscais
 - Informações fiscais
 - Contas Asaas (subcontas)
-- Pix (chaves, QR Code estático)
 - Transações Pix
 - Outros recursos da API v3
 

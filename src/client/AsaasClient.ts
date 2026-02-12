@@ -6,6 +6,7 @@ import { CustomerService } from '../services/customer.service.js';
 import { InstallmentService } from '../services/installment.service.js';
 import { NotificationService } from '../services/notification.service.js';
 import { PaymentLinkService } from '../services/payment-link.service.js';
+import { PixService } from '../services/pix.service.js';
 import { PaymentService } from '../services/payment.service.js';
 import { SubscriptionService } from '../services/subscription.service.js';
 import { TransferService } from '../services/transfer.service.js';
@@ -50,6 +51,7 @@ export class AsaasClient {
   readonly payments: PaymentService;
   readonly notifications: NotificationService;
   readonly paymentLinks: PaymentLinkService;
+  readonly pix: PixService;
   readonly subscriptions: SubscriptionService;
   readonly transfers: TransferService;
   readonly webhooks: WebhookService;
@@ -65,6 +67,7 @@ export class AsaasClient {
     this.payments = new PaymentService(this.http);
     this.notifications = new NotificationService(this.http);
     this.paymentLinks = new PaymentLinkService(this.http);
+    this.pix = new PixService(this.http);
     this.subscriptions = new SubscriptionService(this.http);
     this.transfers = new TransferService(this.http);
     this.webhooks = new WebhookService(this.http);
