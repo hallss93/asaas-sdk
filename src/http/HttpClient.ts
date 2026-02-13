@@ -22,6 +22,23 @@ export class HttpClient {
     }
   }
 
+  /** Monta a URL absoluta (baseUrl + path) e opcionalmente adiciona query params. */
+  private buildUrl(
+    path: string,
+    params?: Record<string, string | number | boolean | undefined>
+  ): string {
+    const base = this.config.baseUrl.replace(/\/$/, '');
+    const pathWithBase = path.startsWith('/') ? `${base}${path}` : `${base}/${path}`;
+    if (!params || Object.keys(params).length === 0) {
+      return pathWithBase;
+    }
+    const url = new URL(pathWithBase);
+    Object.entries(params).forEach(([k, v]) => {
+      if (v !== undefined && v !== '') url.searchParams.set(k, String(v));
+    });
+    return url.toString();
+  }
+
   private getHeaders(omitContentType = false): Record<string, string> {
     const headers: Record<string, string> = {
       [HEADER_ACCESS_TOKEN]: this.config.apiKey,
@@ -55,15 +72,8 @@ export class HttpClient {
     path: string,
     params?: Record<string, string | number | boolean | undefined>
   ): Promise<T> {
-    const base = this.config.baseUrl.replace(/\/$/, '');
-    const pathWithBase = path.startsWith('/') ? `${base}${path}` : `${base}/${path}`;
-    const url = new URL(pathWithBase);
-    if (params) {
-      Object.entries(params).forEach(([k, v]) => {
-        if (v !== undefined && v !== '') url.searchParams.set(k, String(v));
-      });
-    }
-    const res = await fetch(url.toString(), {
+    const url = this.buildUrl(path, params);
+    const res = await fetch(url, {
       method: 'GET',
       headers: this.getHeaders(),
     });
@@ -71,9 +81,8 @@ export class HttpClient {
   }
 
   async post<T>(path: string, body?: unknown): Promise<T> {
-    const base = this.config.baseUrl.replace(/\/$/, '');
-    const pathWithBase = path.startsWith('/') ? `${base}${path}` : `${base}/${path}`;
-    const res = await fetch(pathWithBase, {
+    const url = this.buildUrl(path);
+    const res = await fetch(url, {
       method: 'POST',
       headers: this.getHeaders(),
       body: body ? JSON.stringify(body) : undefined,
@@ -82,9 +91,8 @@ export class HttpClient {
   }
 
   async put<T>(path: string, body?: unknown): Promise<T> {
-    const base = this.config.baseUrl.replace(/\/$/, '');
-    const pathWithBase = path.startsWith('/') ? `${base}${path}` : `${base}/${path}`;
-    const res = await fetch(pathWithBase, {
+    const url = this.buildUrl(path);
+    const res = await fetch(url, {
       method: 'PUT',
       headers: this.getHeaders(),
       body: body ? JSON.stringify(body) : undefined,
@@ -93,9 +101,8 @@ export class HttpClient {
   }
 
   async delete<T>(path: string): Promise<T> {
-    const base = this.config.baseUrl.replace(/\/$/, '');
-    const pathWithBase = path.startsWith('/') ? `${base}${path}` : `${base}/${path}`;
-    const res = await fetch(pathWithBase, {
+    const url = this.buildUrl(path);
+    const res = await fetch(url, {
       method: 'DELETE',
       headers: this.getHeaders(),
     });
@@ -104,9 +111,8 @@ export class HttpClient {
 
   /** POST com multipart/form-data (ex.: upload de arquivo). Não define Content-Type para fetch definir o boundary. */
   async postMultipart<T>(path: string, formData: FormData): Promise<T> {
-    const base = this.config.baseUrl.replace(/\/$/, '');
-    const pathWithBase = path.startsWith('/') ? `${base}${path}` : `${base}/${path}`;
-    const res = await fetch(pathWithBase, {
+    const url = this.buildUrl(path);
+    const res = await fetch(url, {
       method: 'POST',
       headers: this.getHeaders(true),
       body: formData,
