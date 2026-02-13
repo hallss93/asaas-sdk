@@ -20,6 +20,7 @@ describe('AsaasClient', () => {
       expect(client.account).toBeDefined();
       expect(client.anticipations).toBeDefined();
       expect(client.customers).toBeDefined();
+      expect(client.dunnings).toBeDefined();
       expect(client.installments).toBeDefined();
       expect(client.payments).toBeDefined();
       expect(client.notifications).toBeDefined();

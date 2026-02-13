@@ -121,10 +121,10 @@ Esta seção é atualizada conforme novos serviços são implementados.
 | **Links de pagamento** | `asaas.paymentLinks` | `create`, `getById`, `list`, `update`, `delete`, `restore`, `addImage`, `listImages`, `getImage`, `deleteImage`, `setImageAsMain` |
 | **Informações da conta** | `asaas.account` | `getCommercialInfo`, `updateCommercialInfo`, `getFees`, `getWallets` |
 | **Pix (chaves, QR estático)** | `asaas.pix` | `createAddressKey`, `listAddressKeys`, `getAddressKeyById`, `deleteAddressKey`, `createStaticQrCode` |
+| **Recuperações (negativações)** | `asaas.dunnings` | `list`, `getById`, `cancel`, `resendDocuments`, `listHistory`, `listPartialPayments` |
 
 ### 📋 Planejados (futuros)
 
-- Recuperações (negativações)
 - Pagamento de contas
 - Consulta Serasa
 - Extrato

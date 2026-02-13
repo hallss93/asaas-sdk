@@ -1,6 +1,7 @@
 export * from './account';
 export * from './common';
 export * from './customer';
+export * from './dunning';
 export * from './payment';
 export * from './installment';
 export * from './subscription';

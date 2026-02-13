@@ -9,6 +9,7 @@ export { HttpClient } from './http/HttpClient.js';
 export { AccountService } from './services/account.service.js';
 export { AnticipationService } from './services/anticipation.service.js';
 export { CustomerService } from './services/customer.service.js';
+export { DunningService } from './services/dunning.service.js';
 export { InstallmentService } from './services/installment.service.js';
 export { NotificationService } from './services/notification.service.js';
 export { PaymentLinkService } from './services/payment-link.service.js';
@@ -45,6 +46,12 @@ export type {
   SimulateAnticipationRequest,
 } from './types/anticipation.js';
 export type { CreateCustomerRequest, UpdateCustomerRequest, Customer } from './types/customer.js';
+export type {
+  ListPaymentDunningsParams,
+  PaymentDunning,
+  PaymentDunningHistoryEvent,
+  PaymentDunningPartialPayment,
+} from './types/dunning.js';
 export type { Installment, ListInstallmentsParams } from './types/installment.js';
 export type { Notification, UpdateNotificationRequest } from './types/notification.js';
 export type {
