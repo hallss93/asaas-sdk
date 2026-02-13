@@ -123,13 +123,13 @@ Esta seção é atualizada conforme novos serviços são implementados.
 | **Pix (chaves, QR estático)** | `asaas.pix` | `createAddressKey`, `listAddressKeys`, `getAddressKeyById`, `deleteAddressKey`, `createStaticQrCode` |
 | **Recuperações (negativações)** | `asaas.dunnings` | `list`, `getById`, `cancel`, `resendDocuments`, `listHistory`, `listPartialPayments` |
 | **Extrato** | `asaas.statement` | `list` |
+| **Informações fiscais** | `asaas.fiscalInfo` | `get`, `getMunicipalOptions`, `createOrUpdate` |
 
 ### 📋 Planejados (futuros)
 
 - Pagamento de contas
 - Consulta Serasa
 - Notas fiscais
-- Informações fiscais
 - Contas Asaas (subcontas)
 - Transações Pix
 - Outros recursos da API v3
@@ -158,6 +158,19 @@ try {
 - `npm run lint` – ESLint
 - `npm run format` – Prettier (escreve)
 - `npm run format:check` – Prettier (apenas verifica)
+
+## Contribuindo
+
+- **Problemas ou pedidos de funcionalidade:** abra uma [issue](https://github.com/hallss93/asaas/issues) descrevendo o problema ou a sugestão, ou entre em contato por [e-mail](mailto:hallison.pm@gmail.com) ou [LinkedIn](https://www.linkedin.com/in/hallss93).
+- **Correções e melhorias:** envie um [pull request](https://github.com/hallss93/asaas/compare). Faça um fork do repositório, crie uma branch para sua alteração e abra o PR referenciando a issue (se houver).
+
+## Autor
+
+**Hallison Melo** — Desenvolvedor Full Stack com foco em JavaScript/TypeScript, Node.js, Vue, React e React Native. Atua em frontend, backend e mobile.
+
+- **E-mail:** [hallison.pm@gmail.com](mailto:hallison.pm@gmail.com)
+- **GitHub:** [github.com/hallss93](https://github.com/hallss93/)
+- **LinkedIn:** [linkedin.com/in/hallss93](https://www.linkedin.com/in/hallss93)
 
 ## Licença
 
