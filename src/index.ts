@@ -5,6 +5,7 @@
 
 export { AsaasClient } from './client/AsaasClient.js';
 export { AsaasApiError } from './errors/AsaasApiError.js';
+export { AsaasConfigError } from './errors/AsaasConfigError.js';
 export { HttpClient } from './http/HttpClient.js';
 export { AccountService } from './services/account.service.js';
 export { AnticipationService } from './services/anticipation.service.js';

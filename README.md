@@ -146,6 +146,8 @@ try {
 }
 ```
 
+Em erros de **configuração** (ex.: apiKey ausente), é lançado `AsaasConfigError` (apenas `message`).
+
 ## Scripts do projeto
 
 - `npm run build` – gera `dist/`

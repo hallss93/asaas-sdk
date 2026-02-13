@@ -1,4 +1,5 @@
 import { ASAAS_BASE_URL, DEFAULT_ENV, type AsaasEnvironment } from '../constants/index.js';
+import { AsaasConfigError } from '../errors/AsaasConfigError.js';
 import { HttpClient } from '../http/HttpClient.js';
 import { AccountService } from '../services/account.service.js';
 import { AnticipationService } from '../services/anticipation.service.js';
@@ -25,7 +26,7 @@ function getApiKey(config?: AsaasClientConfig): string {
   const fromEnv = typeof process !== 'undefined' && process.env?.ASAAS_API_KEY?.trim();
   const key = fromConfig ?? fromEnv;
   if (!key) {
-    throw new Error(
+    throw new AsaasConfigError(
       'Asaas API Key is required. Set ASAAS_API_KEY in env or pass apiKey in config.'
     );
   }

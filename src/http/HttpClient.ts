@@ -1,4 +1,5 @@
 import { HEADER_ACCESS_TOKEN } from '../constants/index.js';
+import { AsaasConfigError } from '../errors/AsaasConfigError.js';
 import { AsaasApiError } from '../errors/AsaasApiError.js';
 import type { AsaasApiErrorResponse } from '../types/common.js';
 
@@ -14,10 +15,10 @@ export interface HttpClientConfig {
 export class HttpClient {
   constructor(private readonly config: HttpClientConfig) {
     if (!config.apiKey?.trim()) {
-      throw new Error('Asaas API Key is required');
+      throw new AsaasConfigError('Asaas API Key is required');
     }
     if (!config.baseUrl?.trim()) {
-      throw new Error('Asaas base URL is required');
+      throw new AsaasConfigError('Asaas base URL is required');
     }
   }
 

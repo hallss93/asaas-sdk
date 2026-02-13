@@ -54,7 +54,9 @@ export interface MunicipalService {
   [key: string]: unknown;
 }
 
-/** Parâmetros para listar serviços municipais */
+/** Parâmetros para listar serviços municipais (paginação: offset/limit) */
 export interface ListMunicipalServicesParams {
   description?: string;
+  offset?: number;
+  limit?: number;
 }
