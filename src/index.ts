@@ -97,8 +97,10 @@ export type {
   CreatePixAddressKeyRequest,
   CreateStaticPixQrCodeRequest,
   ListPixAddressKeysParams,
+  ListPixTransactionsParams,
   PixAddressKey,
   PixAddressKeyType,
+  PixTransaction,
   StaticPixQrCode,
 } from './types/pix.js';
 export type { FinancialTransaction, ListStatementParams } from './types/statement.js';

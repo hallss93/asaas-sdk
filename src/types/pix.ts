@@ -52,3 +52,25 @@ export interface StaticPixQrCode {
   payload?: string;
   [key: string]: unknown;
 }
+
+/**
+ * Transação Pix.
+ * @see https://docs.asaas.com/reference/listar-transacoes
+ */
+export interface PixTransaction {
+  id?: string;
+  type?: string;
+  value?: number;
+  status?: string;
+  dateCreated?: string;
+  [key: string]: unknown;
+}
+
+/** Parâmetros para listar transações Pix */
+export interface ListPixTransactionsParams {
+  offset?: number;
+  limit?: number;
+  dateFrom?: string;
+  dateTo?: string;
+  type?: string;
+}

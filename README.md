@@ -120,7 +120,7 @@ Esta seção é atualizada conforme novos serviços são implementados.
 | **Webhooks** | `asaas.webhooks` | `getPayment`, `updatePayment`, `getInvoice`, `updateInvoice` |
 | **Links de pagamento** | `asaas.paymentLinks` | `create`, `getById`, `list`, `update`, `delete`, `restore`, `addImage`, `listImages`, `getImage`, `deleteImage`, `setImageAsMain` |
 | **Informações da conta** | `asaas.account` | `getCommercialInfo`, `updateCommercialInfo`, `getFees`, `getWallets` |
-| **Pix (chaves, QR estático)** | `asaas.pix` | `createAddressKey`, `listAddressKeys`, `getAddressKeyById`, `deleteAddressKey`, `createStaticQrCode` |
+| **Pix (chaves, QR estático, transações)** | `asaas.pix` | `createAddressKey`, `listAddressKeys`, `getAddressKeyById`, `deleteAddressKey`, `createStaticQrCode`, `listTransactions` |
 | **Recuperações (negativações)** | `asaas.dunnings` | `list`, `getById`, `cancel`, `resendDocuments`, `listHistory`, `listPartialPayments` |
 | **Extrato** | `asaas.statement` | `list` |
 | **Informações fiscais** | `asaas.fiscalInfo` | `get`, `getMunicipalOptions`, `createOrUpdate` |
@@ -131,7 +131,6 @@ Esta seção é atualizada conforme novos serviços são implementados.
 
 - Consulta Serasa
 - Contas Asaas (subcontas)
-- Transações Pix
 - Outros recursos da API v3
 
 ## Erros

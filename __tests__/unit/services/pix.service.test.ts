@@ -89,4 +89,37 @@ describe('PixService', () => {
       expect.objectContaining({ method: 'POST', body: JSON.stringify(payload) })
     );
   });
+
+  it('listTransactions sends GET to /api/v3/pix/transactions with query params', async () => {
+    const listResponse = {
+      object: 'list',
+      hasMore: false,
+      totalCount: 1,
+      limit: 10,
+      offset: 0,
+      data: [
+        {
+          id: 'tx_1',
+          type: 'PIX_RECEIVED',
+          value: 50,
+          status: 'COMPLETED',
+          dateCreated: '2024-01-15T10:00:00Z',
+        },
+      ],
+    };
+    fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(listResponse), { status: 200 }));
+    const result = await service.listTransactions({
+      dateFrom: '2024-01-01',
+      dateTo: '2024-01-31',
+      limit: 10,
+    });
+    expect(result.data).toHaveLength(1);
+    expect(result.data[0].id).toBe('tx_1');
+    expect(result.data[0].type).toBe('PIX_RECEIVED');
+    const url = fetchMock.mock.calls[0][0];
+    expect(url).toContain('/api/v3/pix/transactions');
+    expect(url).toContain('dateFrom=2024-01-01');
+    expect(url).toContain('dateTo=2024-01-31');
+    expect(url).toContain('limit=10');
+  });
 });

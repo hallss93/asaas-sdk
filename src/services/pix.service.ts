@@ -4,7 +4,9 @@ import type {
   CreatePixAddressKeyRequest,
   CreateStaticPixQrCodeRequest,
   ListPixAddressKeysParams,
+  ListPixTransactionsParams,
   PixAddressKey,
+  PixTransaction,
   StaticPixQrCode,
 } from '../types/pix.js';
 
@@ -38,5 +40,11 @@ export class PixService extends BaseService {
   /** Criar QR Code estático Pix */
   createStaticQrCode(data: CreateStaticPixQrCodeRequest): Promise<StaticPixQrCode> {
     return this.http.post<StaticPixQrCode>(this.path('qrCodes/static'), data);
+  }
+
+  /** Listar transações Pix */
+  listTransactions(params?: ListPixTransactionsParams): Promise<PaginatedResponse<PixTransaction>> {
+    const query = params as Record<string, string | number | undefined>;
+    return this.http.get<PaginatedResponse<PixTransaction>>(this.path('transactions'), query);
   }
 }
