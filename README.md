@@ -124,12 +124,12 @@ Esta seção é atualizada conforme novos serviços são implementados.
 | **Recuperações (negativações)** | `asaas.dunnings` | `list`, `getById`, `cancel`, `resendDocuments`, `listHistory`, `listPartialPayments` |
 | **Extrato** | `asaas.statement` | `list` |
 | **Informações fiscais** | `asaas.fiscalInfo` | `get`, `getMunicipalOptions`, `createOrUpdate` |
+| **Notas fiscais** | `asaas.invoices` | `list`, `getById`, `schedule`, `update`, `authorize` |
 
 ### 📋 Planejados (futuros)
 
 - Pagamento de contas
 - Consulta Serasa
-- Notas fiscais
 - Contas Asaas (subcontas)
 - Transações Pix
 - Outros recursos da API v3

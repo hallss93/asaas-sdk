@@ -1,6 +1,6 @@
 {
   "name": "asaas-sdk-node",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "SDK Asaas v3 para Node.js (TypeScript/JavaScript) - Express, NestJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,8 @@
   },
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "scripts"
   ],
   "scripts": {
     "build": "npm run clean && tsc -p tsconfig.build.json",
@@ -26,7 +27,8 @@
     "test:ci": "jest --ci --coverage --coverageReporters=text --coverageReporters=lcov",
     "test:unit": "jest --testPathPattern=__tests__/unit",
     "test:integration": "jest --testPathPattern=__tests__/integration",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "node scripts/check-update.js"
   },
   "keywords": [
     "asaas",

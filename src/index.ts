@@ -12,6 +12,7 @@ export { CustomerService } from './services/customer.service.js';
 export { DunningService } from './services/dunning.service.js';
 export { FiscalInfoService } from './services/fiscal-info.service.js';
 export { InstallmentService } from './services/installment.service.js';
+export { InvoiceService } from './services/invoice.service.js';
 export { NotificationService } from './services/notification.service.js';
 export { PaymentLinkService } from './services/payment-link.service.js';
 export { PaymentService } from './services/payment.service.js';
@@ -62,6 +63,12 @@ export type {
   SpecialTaxRegimeOption,
 } from './types/fiscal-info.js';
 export type { Installment, ListInstallmentsParams } from './types/installment.js';
+export type {
+  Invoice,
+  ListInvoicesParams,
+  ScheduleInvoiceRequest,
+  UpdateInvoiceRequest,
+} from './types/invoice.js';
 export type { Notification, UpdateNotificationRequest } from './types/notification.js';
 export type {
   CreatePaymentRequest,

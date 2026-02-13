@@ -6,6 +6,7 @@ import { CustomerService } from '../services/customer.service.js';
 import { DunningService } from '../services/dunning.service.js';
 import { FiscalInfoService } from '../services/fiscal-info.service.js';
 import { InstallmentService } from '../services/installment.service.js';
+import { InvoiceService } from '../services/invoice.service.js';
 import { NotificationService } from '../services/notification.service.js';
 import { PaymentLinkService } from '../services/payment-link.service.js';
 import { PixService } from '../services/pix.service.js';
@@ -53,6 +54,7 @@ export class AsaasClient {
   readonly dunnings: DunningService;
   readonly fiscalInfo: FiscalInfoService;
   readonly installments: InstallmentService;
+  readonly invoices: InvoiceService;
   readonly payments: PaymentService;
   readonly notifications: NotificationService;
   readonly paymentLinks: PaymentLinkService;
@@ -72,6 +74,7 @@ export class AsaasClient {
     this.dunnings = new DunningService(this.http);
     this.fiscalInfo = new FiscalInfoService(this.http);
     this.installments = new InstallmentService(this.http);
+    this.invoices = new InvoiceService(this.http);
     this.payments = new PaymentService(this.http);
     this.notifications = new NotificationService(this.http);
     this.paymentLinks = new PaymentLinkService(this.http);
