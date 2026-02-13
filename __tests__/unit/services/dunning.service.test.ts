@@ -18,6 +18,52 @@ describe('DunningService', () => {
     fetchMock.mockRestore();
   });
 
+  it('create sends POST multipart to /api/v3/paymentDunnings', async () => {
+    const formData = new FormData();
+    formData.append('payment', 'pay_1');
+    formData.append('description', 'Cobrança em atraso');
+    formData.append('type', 'CREDIT_BUREAU');
+    const response = { id: 'dun_1', payment: 'pay_1', status: 'PENDING' };
+    fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(response), { status: 200 }));
+    const result = await service.create(formData);
+    expect(result.id).toBe('dun_1');
+    expect(fetchMock).toHaveBeenCalledWith(
+      expect.stringContaining('/api/v3/paymentDunnings'),
+      expect.objectContaining({ method: 'POST', body: formData })
+    );
+  });
+
+  it('simulate sends POST to /api/v3/paymentDunnings/simulate', async () => {
+    const request = { payment: 'pay_1' };
+    const response = { payment: 'pay_1', types: [{ type: 'CREDIT_BUREAU', value: 50 }] };
+    fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(response), { status: 200 }));
+    const result = await service.simulate(request);
+    expect(result.payment).toBe('pay_1');
+    expect(result.types).toHaveLength(1);
+    expect(fetchMock).toHaveBeenCalledWith(
+      expect.stringContaining('/api/v3/paymentDunnings/simulate'),
+      expect.objectContaining({ method: 'POST', body: JSON.stringify(request) })
+    );
+  });
+
+  it('listPaymentsAvailable sends GET to paymentsAvailableForDunning', async () => {
+    const listResponse = {
+      object: 'list',
+      hasMore: false,
+      totalCount: 1,
+      limit: 10,
+      offset: 0,
+      data: [{ payment: 'pay_1', value: 100 }],
+    };
+    fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(listResponse), { status: 200 }));
+    const result = await service.listPaymentsAvailable({ offset: 0, limit: 10 });
+    expect(result.data).toHaveLength(1);
+    expect(result.data[0].payment).toBe('pay_1');
+    const url = fetchMock.mock.calls[0][0];
+    expect(url).toContain('/api/v3/paymentDunnings/paymentsAvailableForDunning');
+    expect(url).toContain('limit=10');
+  });
+
   it('list sends GET to /api/v3/paymentDunnings with query params', async () => {
     const listResponse = {
       object: 'list',

@@ -80,6 +80,29 @@ describe('SubscriptionService', () => {
     );
   });
 
+  it('listInvoices sends GET to /api/v3/subscriptions/:id/invoices', async () => {
+    const listResponse = {
+      object: 'list',
+      hasMore: false,
+      totalCount: 1,
+      limit: 10,
+      offset: 0,
+      data: [{ id: 'inv_1', subscription: 'sub_1', status: 'AUTHORIZED' }],
+    };
+    fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(listResponse), { status: 200 }));
+    const result = await service.listInvoices('sub_1', {
+      offset: 0,
+      limit: 10,
+      status: 'AUTHORIZED',
+    });
+    expect(result.data).toHaveLength(1);
+    expect(result.data[0].id).toBe('inv_1');
+    const url = fetchMock.mock.calls[0][0];
+    expect(url).toContain('/api/v3/subscriptions/sub_1/invoices');
+    expect(url).toContain('limit=10');
+    expect(url).toContain('status=AUTHORIZED');
+  });
+
   it('update sends POST to /api/v3/subscriptions/:id', async () => {
     const updated = { id: 'sub_1', value: 39.9 };
     fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(updated), { status: 200 }));

@@ -89,4 +89,33 @@ describe('InvoiceService', () => {
       expect.objectContaining({ method: 'POST' })
     );
   });
+
+  it('cancel sends POST to /api/v3/invoices/:id/cancel', async () => {
+    const response = { id: 'inv_1', status: 'CANCELLED' };
+    fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(response), { status: 200 }));
+    const result = await service.cancel('inv_1');
+    expect(result.status).toBe('CANCELLED');
+    expect(fetchMock).toHaveBeenCalledWith(
+      expect.stringContaining('/api/v3/invoices/inv_1/cancel'),
+      expect.objectContaining({ method: 'POST' })
+    );
+  });
+
+  it('listMunicipalServices sends GET to /api/v3/invoices/municipalServices', async () => {
+    const listResponse = {
+      object: 'list',
+      hasMore: false,
+      totalCount: 1,
+      limit: 10,
+      offset: 0,
+      data: [{ id: '1', code: '1.01', description: 'Análise e desenvolvimento de sistemas' }],
+    };
+    fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(listResponse), { status: 200 }));
+    const result = await service.listMunicipalServices({ description: 'desenvolvimento' });
+    expect(result.data).toHaveLength(1);
+    expect(result.data[0].code).toBe('1.01');
+    const url = fetchMock.mock.calls[0][0];
+    expect(url).toContain('/api/v3/invoices/municipalServices');
+    expect(url).toContain('description=desenvolvimento');
+  });
 });

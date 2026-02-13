@@ -67,4 +67,39 @@ describe('AccountService', () => {
       expect.objectContaining({ method: 'GET' })
     );
   });
+
+  it('getPaymentCheckoutConfig sends GET to /api/v3/myAccount/paymentCheckoutConfig/', async () => {
+    const response = { status: 'APPROVED', logoUrl: 'https://...', fontColor: '#000' };
+    fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(response), { status: 200 }));
+    const result = await service.getPaymentCheckoutConfig();
+    expect(result.status).toBe('APPROVED');
+    expect(fetchMock).toHaveBeenCalledWith(
+      expect.stringContaining('/api/v3/myAccount/paymentCheckoutConfig/'),
+      expect.objectContaining({ method: 'GET' })
+    );
+  });
+
+  it('updatePaymentCheckoutConfig sends POST to paymentCheckoutConfig/', async () => {
+    const payload = { fontColor: '#333', backgroundColor: '#fff' };
+    const response = { status: 'PENDING', ...payload };
+    fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(response), { status: 200 }));
+    const result = await service.updatePaymentCheckoutConfig(payload);
+    expect(result.fontColor).toBe('#333');
+    expect(fetchMock).toHaveBeenCalledWith(
+      expect.stringContaining('/api/v3/myAccount/paymentCheckoutConfig/'),
+      expect.objectContaining({ method: 'POST', body: JSON.stringify(payload) })
+    );
+  });
+
+  it('updatePaymentCheckoutConfigFormData sends POST multipart to paymentCheckoutConfig/', async () => {
+    const formData = new FormData();
+    formData.append('fontColor', '#000');
+    const response = { status: 'PENDING' };
+    fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(response), { status: 200 }));
+    await service.updatePaymentCheckoutConfigFormData(formData);
+    expect(fetchMock).toHaveBeenCalledWith(
+      expect.stringContaining('/api/v3/myAccount/paymentCheckoutConfig/'),
+      expect.objectContaining({ method: 'POST', body: formData })
+    );
+  });
 });

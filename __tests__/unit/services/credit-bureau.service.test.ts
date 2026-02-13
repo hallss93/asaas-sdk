@@ -48,4 +48,38 @@ describe('CreditBureauService', () => {
       expect.objectContaining({ method: 'POST', body: JSON.stringify(request) })
     );
   });
+
+  it('getById sends GET to /api/v3/creditBureauReport/:id', async () => {
+    const response = { id: 'report_1', status: 'COMPLETED', customer: 'cus_123' };
+    fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(response), { status: 200 }));
+    const result = await service.getById('report_1');
+    expect(result.id).toBe('report_1');
+    expect(fetchMock).toHaveBeenCalledWith(
+      expect.stringContaining('/api/v3/creditBureauReport/report_1'),
+      expect.objectContaining({ method: 'GET' })
+    );
+  });
+
+  it('list sends GET to /api/v3/creditBureauReport with startDate and endDate', async () => {
+    const listResponse = {
+      object: 'list',
+      hasMore: false,
+      totalCount: 1,
+      limit: 10,
+      offset: 0,
+      data: [{ id: 'report_1', status: 'COMPLETED' }],
+    };
+    fetchMock.mockResolvedValueOnce(new Response(JSON.stringify(listResponse), { status: 200 }));
+    const result = await service.list({
+      startDate: '2025-01-01',
+      endDate: '2025-01-31',
+      limit: 10,
+    });
+    expect(result.data).toHaveLength(1);
+    const url = fetchMock.mock.calls[0][0];
+    expect(url).toContain('/api/v3/creditBureauReport');
+    expect(url).toContain('startDate=2025-01-01');
+    expect(url).toContain('endDate=2025-01-31');
+    expect(url).toContain('limit=10');
+  });
 });
