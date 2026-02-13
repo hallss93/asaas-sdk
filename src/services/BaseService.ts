@@ -12,8 +12,15 @@ export abstract class BaseService {
     protected readonly basePath: string
   ) {}
 
+  /** Path relativo ao basePath do serviço (ex.: path('fees') → /api/v3/myAccount/fees). */
   protected path(segment?: string): string {
     const p = `${API_PREFIX}${this.basePath}`;
     return segment ? `${p}/${segment}` : p;
+  }
+
+  /** Path absoluto na API, fora do basePath do serviço (ex.: pathAbsolute('wallets') → /api/v3/wallets). */
+  protected pathAbsolute(segment: string): string {
+    const s = segment.startsWith('/') ? segment.slice(1) : segment;
+    return `${API_PREFIX}/${s}`;
   }
 }

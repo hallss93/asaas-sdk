@@ -1,6 +1,6 @@
 {
   "name": "asaas-sdk-node",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "SDK Asaas v3 para Node.js (TypeScript/JavaScript) - Express, NestJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

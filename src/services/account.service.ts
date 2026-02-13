@@ -8,8 +8,6 @@ import type {
   WalletListResponse,
 } from '../types/account.js';
 
-const WALLETS_PATH = '/api/v3/wallets';
-
 /** Serviço de Informações da conta (myAccount) da API Asaas */
 export class AccountService extends BaseService {
   constructor(http: import('../http/HttpClient.js').HttpClient) {
@@ -31,9 +29,9 @@ export class AccountService extends BaseService {
     return this.http.get<AccountFees>(this.path('fees'));
   }
 
-  /** Recuperar carteiras (WalletId e lista de carteiras) */
+  /** Recuperar carteiras (WalletId e lista de carteiras); endpoint /wallets não é subpath de myAccount. */
   getWallets(): Promise<WalletListResponse> {
-    return this.http.get<WalletListResponse>(WALLETS_PATH);
+    return this.http.get<WalletListResponse>(this.pathAbsolute('wallets'));
   }
 
   /** Recuperar configurações de personalização da fatura (checkout) */
