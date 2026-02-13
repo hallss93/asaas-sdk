@@ -4,6 +4,8 @@ import type {
   CreatePaymentRequest,
   ListPaymentsParams,
   Payment,
+  PaymentIdentificationField,
+  PaymentPixQrCodeResponse,
   UpdatePaymentRequest,
 } from '../types/payment.js';
 
@@ -50,17 +52,13 @@ export class PaymentService extends BaseService {
   }
 
   /** Obter linha digitável do boleto */
-  async getDigitableLine(id: string): Promise<{ identificationField: string }> {
-    return this.http.get<{ identificationField: string }>(this.path(`${id}/identificationField`));
+  async getDigitableLine(id: string): Promise<PaymentIdentificationField> {
+    return this.http.get<PaymentIdentificationField>(this.path(`${id}/identificationField`));
   }
 
   /** Obter QR Code PIX */
-  async getPixQrCode(id: string): Promise<{
-    encodedImage: string;
-    payload: string;
-    expirationDate?: string;
-  }> {
-    return this.http.get(this.path(`${id}/pixQrCode`));
+  async getPixQrCode(id: string): Promise<PaymentPixQrCodeResponse> {
+    return this.http.get<PaymentPixQrCodeResponse>(this.path(`${id}/pixQrCode`));
   }
 
   /** Confirmar recebimento em dinheiro */

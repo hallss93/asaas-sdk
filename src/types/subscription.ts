@@ -1,3 +1,4 @@
+import type { PaginationParams } from './common.js';
 import type {
   BillingType,
   CreditCard,
@@ -69,13 +70,16 @@ export interface Subscription {
 }
 
 /** Parâmetros para listar assinaturas */
-export interface ListSubscriptionsParams {
+export interface ListSubscriptionsParams extends PaginationParams {
   customer?: string;
   billingType?: BillingType;
-  offset?: number;
-  limit?: number;
   includeDeleted?: boolean;
   externalReference?: string;
+}
+
+/** Parâmetros para listar notas fiscais de uma assinatura */
+export interface ListSubscriptionInvoicesParams extends PaginationParams {
+  status?: string;
 }
 
 /** Impostos da configuração de NF para assinatura */

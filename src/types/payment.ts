@@ -1,3 +1,5 @@
+import type { PaginationParams } from './common.js';
+
 /** Formas de cobrança */
 export type BillingType = 'BOLETO' | 'CREDIT_CARD' | 'DEBIT_CARD' | 'PIX' | 'UNDEFINED';
 
@@ -89,6 +91,18 @@ export interface UpdatePaymentRequest {
   postalService?: boolean;
 }
 
+/** Resposta da linha digitável do boleto (GET /payments/:id/identificationField) */
+export interface PaymentIdentificationField {
+  identificationField: string;
+}
+
+/** Resposta do QR Code PIX da cobrança (GET /payments/:id/pixQrCode) */
+export interface PaymentPixQrCodeResponse {
+  encodedImage: string;
+  payload: string;
+  expirationDate?: string;
+}
+
 /** Cobrança retornada pela API */
 export interface Payment {
   id: string;
@@ -114,7 +128,7 @@ export interface Payment {
 }
 
 /** Filtros para listar cobranças */
-export interface ListPaymentsParams {
+export interface ListPaymentsParams extends PaginationParams {
   customer?: string;
   billingType?: BillingType;
   status?: PaymentStatus;
@@ -127,6 +141,4 @@ export interface ListPaymentsParams {
   'paymentDate[le]'?: string;
   'dueDate[ge]'?: string;
   'dueDate[le]'?: string;
-  offset?: number;
-  limit?: number;
 }

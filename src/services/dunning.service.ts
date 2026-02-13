@@ -1,6 +1,8 @@
 import { BaseService } from './BaseService.js';
 import type { PaginatedResponse } from '../types/common.js';
 import type {
+  ListDunningHistoryParams,
+  ListDunningPartialPaymentsParams,
   ListPaymentDunningsParams,
   ListPaymentsAvailableForDunningParams,
   PaymentAvailableForDunning,
@@ -62,7 +64,7 @@ export class DunningService extends BaseService {
   /** Listar histórico de eventos da negativação */
   listHistory(
     id: string,
-    params?: { offset?: number; limit?: number }
+    params?: ListDunningHistoryParams
   ): Promise<PaginatedResponse<PaymentDunningHistoryEvent>> {
     const query = params as Record<string, string | number | undefined>;
     return this.http.get<PaginatedResponse<PaymentDunningHistoryEvent>>(
@@ -74,7 +76,7 @@ export class DunningService extends BaseService {
   /** Listar pagamentos parciais recebidos (renegociação) da negativação */
   listPartialPayments(
     id: string,
-    params?: { offset?: number; limit?: number }
+    params?: ListDunningPartialPaymentsParams
   ): Promise<PaginatedResponse<PaymentDunningPartialPayment>> {
     const query = params as Record<string, string | number | undefined>;
     return this.http.get<PaginatedResponse<PaymentDunningPartialPayment>>(

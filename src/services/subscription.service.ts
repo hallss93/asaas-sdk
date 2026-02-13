@@ -5,6 +5,7 @@ import type { Payment } from '../types/payment.js';
 import type {
   CreateSubscriptionRequest,
   ListSubscriptionsParams,
+  ListSubscriptionInvoicesParams,
   Subscription,
   SubscriptionInvoiceSettings,
   SubscriptionInvoiceSettingsRequest,
@@ -41,7 +42,7 @@ export class SubscriptionService extends BaseService {
   /** Listar notas fiscais de uma assinatura */
   async listInvoices(
     subscriptionId: string,
-    params?: { offset?: number; limit?: number; status?: string }
+    params?: ListSubscriptionInvoicesParams
   ): Promise<PaginatedResponse<Invoice>> {
     const query = params as Record<string, string | number | undefined>;
     return this.http.get<PaginatedResponse<Invoice>>(

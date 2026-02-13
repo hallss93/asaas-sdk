@@ -5,6 +5,8 @@
  * @see https://docs.asaas.com/reference/reenviar-documentos
  */
 
+import type { PaginationParams } from './common.js';
+
 /** Negativação (dunning) de cobrança */
 export interface PaymentDunning {
   id?: string;
@@ -17,15 +19,19 @@ export interface PaymentDunning {
 }
 
 /** Parâmetros para listar negativações */
-export interface ListPaymentDunningsParams {
-  offset?: number;
-  limit?: number;
+export interface ListPaymentDunningsParams extends PaginationParams {
   payment?: string;
   status?: string;
   type?: string;
   requestStartDate?: string;
   requestEndDate?: string;
 }
+
+/** Parâmetros para listar histórico de eventos da negativação */
+export interface ListDunningHistoryParams extends PaginationParams {}
+
+/** Parâmetros para listar pagamentos parciais da negativação */
+export interface ListDunningPartialPaymentsParams extends PaginationParams {}
 
 /** Payload para simular uma recuperação (POST /paymentDunnings/simulate) */
 export interface SimulatePaymentDunningRequest {
@@ -47,10 +53,7 @@ export interface PaymentAvailableForDunning {
 }
 
 /** Parâmetros para listar cobranças disponíveis para recuperação */
-export interface ListPaymentsAvailableForDunningParams {
-  offset?: number;
-  limit?: number;
-}
+export interface ListPaymentsAvailableForDunningParams extends PaginationParams {}
 
 /** Evento do histórico da negativação */
 export interface PaymentDunningHistoryEvent {
