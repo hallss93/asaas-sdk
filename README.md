@@ -127,11 +127,15 @@ Esta seção é atualizada conforme novos serviços são implementados.
 | **Notas fiscais** | `asaas.invoices` | `list`, `getById`, `schedule`, `update`, `authorize` |
 | **Pagamento de contas** | `asaas.bills` | `list`, `getById`, `simulate`, `create`, `cancel` |
 | **Contas Asaas (subcontas)** | `asaas.subAccounts` | `list`, `getById`, `create` |
+| **Consulta Serasa** | `asaas.creditBureau` | `consult` |
 
 ### 📋 Planejados (futuros)
 
-- Consulta Serasa
-- Outros recursos da API v3
+- **Consulta Serasa:** recuperar consulta por ID, listar consultas (por período)
+- **Recuperações (negativações):** criar recuperação (POST multipart), simular recuperação, listar cobranças disponíveis para recuperação
+- **Informações da conta:** personalização da fatura (paymentCheckoutConfig – salvar e recuperar configurações)
+- **Notas fiscais:** cancelar nota fiscal, listar serviços municipais
+- **Assinaturas:** listar notas fiscais de uma assinatura (`/subscriptions/:id/invoices`)
 
 ## Erros
 

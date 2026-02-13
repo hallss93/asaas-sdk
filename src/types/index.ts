@@ -1,6 +1,7 @@
 export * from './account';
 export * from './bill';
 export * from './common';
+export * from './credit-bureau';
 export * from './customer';
 export * from './dunning';
 export * from './fiscal-info';

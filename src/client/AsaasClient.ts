@@ -3,6 +3,7 @@ import { HttpClient } from '../http/HttpClient.js';
 import { AccountService } from '../services/account.service.js';
 import { AnticipationService } from '../services/anticipation.service.js';
 import { BillService } from '../services/bill.service.js';
+import { CreditBureauService } from '../services/credit-bureau.service.js';
 import { CustomerService } from '../services/customer.service.js';
 import { DunningService } from '../services/dunning.service.js';
 import { FiscalInfoService } from '../services/fiscal-info.service.js';
@@ -53,6 +54,7 @@ export class AsaasClient {
   readonly account: AccountService;
   readonly anticipations: AnticipationService;
   readonly bills: BillService;
+  readonly creditBureau: CreditBureauService;
   readonly customers: CustomerService;
   readonly dunnings: DunningService;
   readonly fiscalInfo: FiscalInfoService;
@@ -75,6 +77,7 @@ export class AsaasClient {
     this.account = new AccountService(this.http);
     this.anticipations = new AnticipationService(this.http);
     this.bills = new BillService(this.http);
+    this.creditBureau = new CreditBureauService(this.http);
     this.customers = new CustomerService(this.http);
     this.dunnings = new DunningService(this.http);
     this.fiscalInfo = new FiscalInfoService(this.http);

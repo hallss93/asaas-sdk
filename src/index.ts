@@ -9,6 +9,7 @@ export { HttpClient } from './http/HttpClient.js';
 export { AccountService } from './services/account.service.js';
 export { AnticipationService } from './services/anticipation.service.js';
 export { BillService } from './services/bill.service.js';
+export { CreditBureauService } from './services/credit-bureau.service.js';
 export { CustomerService } from './services/customer.service.js';
 export { DunningService } from './services/dunning.service.js';
 export { FiscalInfoService } from './services/fiscal-info.service.js';
@@ -56,6 +57,11 @@ export type {
   ListBillsParams,
   SimulateBillResponse,
 } from './types/bill.js';
+export type {
+  CreditBureauCustomerData,
+  CreditBureauReport,
+  CreditBureauReportRequest,
+} from './types/credit-bureau.js';
 export type { CreateCustomerRequest, UpdateCustomerRequest, Customer } from './types/customer.js';
 export type {
   ListPaymentDunningsParams,
