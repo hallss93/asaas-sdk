@@ -8,6 +8,7 @@ export { AsaasApiError } from './errors/AsaasApiError.js';
 export { HttpClient } from './http/HttpClient.js';
 export { AccountService } from './services/account.service.js';
 export { AnticipationService } from './services/anticipation.service.js';
+export { BillService } from './services/bill.service.js';
 export { CustomerService } from './services/customer.service.js';
 export { DunningService } from './services/dunning.service.js';
 export { FiscalInfoService } from './services/fiscal-info.service.js';
@@ -48,6 +49,12 @@ export type {
   ListAnticipationsParams,
   SimulateAnticipationRequest,
 } from './types/anticipation.js';
+export type {
+  Bill,
+  CreateBillRequest,
+  ListBillsParams,
+  SimulateBillResponse,
+} from './types/bill.js';
 export type { CreateCustomerRequest, UpdateCustomerRequest, Customer } from './types/customer.js';
 export type {
   ListPaymentDunningsParams,

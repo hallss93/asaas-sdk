@@ -125,10 +125,10 @@ Esta seção é atualizada conforme novos serviços são implementados.
 | **Extrato** | `asaas.statement` | `list` |
 | **Informações fiscais** | `asaas.fiscalInfo` | `get`, `getMunicipalOptions`, `createOrUpdate` |
 | **Notas fiscais** | `asaas.invoices` | `list`, `getById`, `schedule`, `update`, `authorize` |
+| **Pagamento de contas** | `asaas.bills` | `list`, `getById`, `simulate`, `create`, `cancel` |
 
 ### 📋 Planejados (futuros)
 
-- Pagamento de contas
 - Consulta Serasa
 - Contas Asaas (subcontas)
 - Transações Pix

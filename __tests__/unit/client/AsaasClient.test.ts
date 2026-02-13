@@ -19,6 +19,7 @@ describe('AsaasClient', () => {
       const client = new AsaasClient({ apiKey: 'key_from_config', environment: 'sandbox' });
       expect(client.account).toBeDefined();
       expect(client.anticipations).toBeDefined();
+      expect(client.bills).toBeDefined();
       expect(client.customers).toBeDefined();
       expect(client.dunnings).toBeDefined();
       expect(client.fiscalInfo).toBeDefined();
