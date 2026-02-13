@@ -122,12 +122,12 @@ Esta seção é atualizada conforme novos serviços são implementados.
 | **Informações da conta** | `asaas.account` | `getCommercialInfo`, `updateCommercialInfo`, `getFees`, `getWallets` |
 | **Pix (chaves, QR estático)** | `asaas.pix` | `createAddressKey`, `listAddressKeys`, `getAddressKeyById`, `deleteAddressKey`, `createStaticQrCode` |
 | **Recuperações (negativações)** | `asaas.dunnings` | `list`, `getById`, `cancel`, `resendDocuments`, `listHistory`, `listPartialPayments` |
+| **Extrato** | `asaas.statement` | `list` |
 
 ### 📋 Planejados (futuros)
 
 - Pagamento de contas
 - Consulta Serasa
-- Extrato
 - Notas fiscais
 - Informações fiscais
 - Contas Asaas (subcontas)
