@@ -126,11 +126,11 @@ Esta seção é atualizada conforme novos serviços são implementados.
 | **Informações fiscais** | `asaas.fiscalInfo` | `get`, `getMunicipalOptions`, `createOrUpdate` |
 | **Notas fiscais** | `asaas.invoices` | `list`, `getById`, `schedule`, `update`, `authorize` |
 | **Pagamento de contas** | `asaas.bills` | `list`, `getById`, `simulate`, `create`, `cancel` |
+| **Contas Asaas (subcontas)** | `asaas.subAccounts` | `list`, `getById`, `create` |
 
 ### 📋 Planejados (futuros)
 
 - Consulta Serasa
-- Contas Asaas (subcontas)
 - Outros recursos da API v3
 
 ## Erros

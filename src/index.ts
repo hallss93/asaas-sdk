@@ -19,6 +19,7 @@ export { PaymentLinkService } from './services/payment-link.service.js';
 export { PaymentService } from './services/payment.service.js';
 export { PixService } from './services/pix.service.js';
 export { StatementService } from './services/statement.service.js';
+export { SubAccountService } from './services/sub-account.service.js';
 export { SubscriptionService } from './services/subscription.service.js';
 export { TransferService } from './services/transfer.service.js';
 export { WebhookService } from './services/webhook.service.js';
@@ -104,6 +105,11 @@ export type {
   StaticPixQrCode,
 } from './types/pix.js';
 export type { FinancialTransaction, ListStatementParams } from './types/statement.js';
+export type {
+  CreateSubAccountRequest,
+  ListSubAccountsParams,
+  SubAccount,
+} from './types/sub-account.js';
 export type {
   CreateSubscriptionRequest,
   UpdateSubscriptionRequest,

@@ -15,3 +15,4 @@ export * from './notification';
 export * from './payment-link';
 export * from './pix';
 export * from './statement';
+export * from './sub-account';
