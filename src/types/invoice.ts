@@ -45,3 +45,16 @@ export interface ScheduleInvoiceRequest {
 export type UpdateInvoiceRequest = Partial<
   Omit<ScheduleInvoiceRequest, 'payment' | 'subscription' | 'customer'>
 >;
+
+/** Serviço municipal (item da listagem GET /invoices/municipalServices) */
+export interface MunicipalService {
+  id?: string;
+  code?: string;
+  description?: string;
+  [key: string]: unknown;
+}
+
+/** Parâmetros para listar serviços municipais */
+export interface ListMunicipalServicesParams {
+  description?: string;
+}

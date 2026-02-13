@@ -3,6 +3,8 @@ import type { PaginatedResponse } from '../types/common.js';
 import type {
   Invoice,
   ListInvoicesParams,
+  ListMunicipalServicesParams,
+  MunicipalService,
   ScheduleInvoiceRequest,
   UpdateInvoiceRequest,
 } from '../types/invoice.js';
@@ -37,5 +39,21 @@ export class InvoiceService extends BaseService {
   /** Autorizar/emitir nota fiscal */
   authorize(id: string): Promise<Invoice> {
     return this.http.post<Invoice>(this.path(`${id}/authorize`));
+  }
+
+  /** Cancelar uma nota fiscal */
+  cancel(id: string): Promise<Invoice> {
+    return this.http.post<Invoice>(this.path(`${id}/cancel`));
+  }
+
+  /** Listar serviços municipais (para emissão de NFS-e) */
+  listMunicipalServices(
+    params?: ListMunicipalServicesParams
+  ): Promise<PaginatedResponse<MunicipalService>> {
+    const query = params as Record<string, string | undefined>;
+    return this.http.get<PaginatedResponse<MunicipalService>>(
+      this.path('municipalServices'),
+      query
+    );
   }
 }

@@ -34,3 +34,13 @@ export interface CreditBureauReport {
   dateCreated?: string;
   [key: string]: unknown;
 }
+
+/** Parâmetros para listar consultas Serasa (por período) */
+export interface CreditBureauListParams {
+  /** Data inicial (YYYY-MM-DD) */
+  startDate?: string;
+  /** Data final (YYYY-MM-DD) */
+  endDate?: string;
+  offset?: number;
+  limit?: number;
+}

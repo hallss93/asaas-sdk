@@ -64,3 +64,17 @@ export interface WalletListResponse {
   data?: Wallet[];
   [key: string]: unknown;
 }
+
+/** Configurações de personalização da fatura/checkout (GET/POST myAccount/paymentCheckoutConfig) */
+export interface PaymentCheckoutConfig {
+  status?: string;
+  logoUrl?: string;
+  backgroundColor?: string;
+  infoBackgroundColor?: string;
+  fontColor?: string;
+  observation?: string;
+  [key: string]: unknown;
+}
+
+/** Payload para salvar personalização (POST; para logo use FormData e updatePaymentCheckoutConfigFormData) */
+export type UpdatePaymentCheckoutConfigRequest = Partial<PaymentCheckoutConfig>;

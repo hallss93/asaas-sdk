@@ -2,15 +2,40 @@ import { BaseService } from './BaseService.js';
 import type { PaginatedResponse } from '../types/common.js';
 import type {
   ListPaymentDunningsParams,
+  ListPaymentsAvailableForDunningParams,
+  PaymentAvailableForDunning,
   PaymentDunning,
   PaymentDunningHistoryEvent,
   PaymentDunningPartialPayment,
+  SimulatePaymentDunningRequest,
+  SimulatePaymentDunningResponse,
 } from '../types/dunning.js';
 
 /** Serviço de Recuperações/Negativações (paymentDunnings) da API Asaas */
 export class DunningService extends BaseService {
   constructor(http: import('../http/HttpClient.js').HttpClient) {
     super(http, '/paymentDunnings');
+  }
+
+  /** Criar uma recuperação (multipart: payment, description, customerName, customerCpfCnpj, type, documents, etc.) */
+  create(formData: FormData): Promise<PaymentDunning> {
+    return this.http.postMultipart<PaymentDunning>(this.path(), formData);
+  }
+
+  /** Simular uma recuperação antes de criar */
+  simulate(request: SimulatePaymentDunningRequest): Promise<SimulatePaymentDunningResponse> {
+    return this.http.post<SimulatePaymentDunningResponse>(this.path('simulate'), request);
+  }
+
+  /** Listar cobranças disponíveis para recuperação (negativação) */
+  listPaymentsAvailable(
+    params?: ListPaymentsAvailableForDunningParams
+  ): Promise<PaginatedResponse<PaymentAvailableForDunning>> {
+    const query = params as Record<string, string | number | undefined>;
+    return this.http.get<PaginatedResponse<PaymentAvailableForDunning>>(
+      this.path('paymentsAvailableForDunning'),
+      query
+    );
   }
 
   /** Listar negativações */

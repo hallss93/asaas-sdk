@@ -2,7 +2,9 @@ import { BaseService } from './BaseService.js';
 import type {
   AccountFees,
   CommercialInfo,
+  PaymentCheckoutConfig,
   UpdateCommercialInfoRequest,
+  UpdatePaymentCheckoutConfigRequest,
   WalletListResponse,
 } from '../types/account.js';
 
@@ -32,5 +34,25 @@ export class AccountService extends BaseService {
   /** Recuperar carteiras (WalletId e lista de carteiras) */
   getWallets(): Promise<WalletListResponse> {
     return this.http.get<WalletListResponse>(WALLETS_PATH);
+  }
+
+  /** Recuperar configurações de personalização da fatura (checkout) */
+  getPaymentCheckoutConfig(): Promise<PaymentCheckoutConfig> {
+    return this.http.get<PaymentCheckoutConfig>(this.path('paymentCheckoutConfig/'));
+  }
+
+  /** Salvar personalização da fatura (JSON). Para envio de logo use formData com multipart. */
+  updatePaymentCheckoutConfig(
+    data: UpdatePaymentCheckoutConfigRequest
+  ): Promise<PaymentCheckoutConfig> {
+    return this.http.post<PaymentCheckoutConfig>(this.path('paymentCheckoutConfig/'), data);
+  }
+
+  /** Salvar personalização da fatura com logo (multipart/form-data) */
+  updatePaymentCheckoutConfigFormData(formData: FormData): Promise<PaymentCheckoutConfig> {
+    return this.http.postMultipart<PaymentCheckoutConfig>(
+      this.path('paymentCheckoutConfig/'),
+      formData
+    );
   }
 }

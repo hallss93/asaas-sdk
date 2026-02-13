@@ -41,7 +41,9 @@ export type {
   AccountFees,
   CommercialInfo,
   CommercialInfoExpiration,
+  PaymentCheckoutConfig,
   UpdateCommercialInfoRequest,
+  UpdatePaymentCheckoutConfigRequest,
   Wallet,
   WalletListResponse,
 } from './types/account.js';
@@ -59,15 +61,20 @@ export type {
 } from './types/bill.js';
 export type {
   CreditBureauCustomerData,
+  CreditBureauListParams,
   CreditBureauReport,
   CreditBureauReportRequest,
 } from './types/credit-bureau.js';
 export type { CreateCustomerRequest, UpdateCustomerRequest, Customer } from './types/customer.js';
 export type {
   ListPaymentDunningsParams,
+  ListPaymentsAvailableForDunningParams,
+  PaymentAvailableForDunning,
   PaymentDunning,
   PaymentDunningHistoryEvent,
   PaymentDunningPartialPayment,
+  SimulatePaymentDunningRequest,
+  SimulatePaymentDunningResponse,
 } from './types/dunning.js';
 export type {
   CreateOrUpdateFiscalInfoRequest,
@@ -80,6 +87,8 @@ export type { Installment, ListInstallmentsParams } from './types/installment.js
 export type {
   Invoice,
   ListInvoicesParams,
+  ListMunicipalServicesParams,
+  MunicipalService,
   ScheduleInvoiceRequest,
   UpdateInvoiceRequest,
 } from './types/invoice.js';

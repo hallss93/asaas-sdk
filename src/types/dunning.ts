@@ -22,6 +22,34 @@ export interface ListPaymentDunningsParams {
   limit?: number;
   payment?: string;
   status?: string;
+  type?: string;
+  requestStartDate?: string;
+  requestEndDate?: string;
+}
+
+/** Payload para simular uma recuperação (POST /paymentDunnings/simulate) */
+export interface SimulatePaymentDunningRequest {
+  payment: string;
+}
+
+/** Resposta da simulação de recuperação */
+export interface SimulatePaymentDunningResponse {
+  payment?: string;
+  types?: Array<{ type?: string; value?: number; [key: string]: unknown }>;
+  [key: string]: unknown;
+}
+
+/** Cobrança disponível para recuperação (item da listagem paymentsAvailableForDunning) */
+export interface PaymentAvailableForDunning {
+  payment?: string;
+  value?: number;
+  [key: string]: unknown;
+}
+
+/** Parâmetros para listar cobranças disponíveis para recuperação */
+export interface ListPaymentsAvailableForDunningParams {
+  offset?: number;
+  limit?: number;
 }
 
 /** Evento do histórico da negativação */

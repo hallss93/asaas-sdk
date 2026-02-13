@@ -1,5 +1,6 @@
 import { BaseService } from './BaseService.js';
 import type { PaginatedResponse } from '../types/common.js';
+import type { Invoice } from '../types/invoice.js';
 import type { Payment } from '../types/payment.js';
 import type {
   CreateSubscriptionRequest,
@@ -35,6 +36,18 @@ export class SubscriptionService extends BaseService {
   /** Listar cobranças de uma assinatura */
   async listPayments(id: string): Promise<PaginatedResponse<Payment>> {
     return this.http.get<PaginatedResponse<Payment>>(this.path(`${id}/payments`));
+  }
+
+  /** Listar notas fiscais de uma assinatura */
+  async listInvoices(
+    subscriptionId: string,
+    params?: { offset?: number; limit?: number; status?: string }
+  ): Promise<PaginatedResponse<Invoice>> {
+    const query = params as Record<string, string | number | undefined>;
+    return this.http.get<PaginatedResponse<Invoice>>(
+      this.path(`${subscriptionId}/invoices`),
+      query
+    );
   }
 
   /** Atualizar assinatura existente (API usa POST) */

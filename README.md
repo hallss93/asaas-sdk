@@ -115,27 +115,20 @@ Esta seção é atualizada conforme novos serviços são implementados.
 | **Antecipações** | `asaas.anticipations` | `simulate`, `create`, `getById`, `list` |
 | **Parcelamentos** | `asaas.installments` | `getById`, `list`, `delete`, `refund` |
 | **Notificações** | `asaas.notifications` | `update` |
-| **Assinaturas** | `asaas.subscriptions` | `create`, `getById`, `list`, `listPayments`, `update`, `delete`, `createInvoiceSettings`, `getInvoiceSettings`, `updateInvoiceSettings`, `deleteInvoiceSettings` |
+| **Assinaturas** | `asaas.subscriptions` | `create`, `getById`, `list`, `listPayments`, `listInvoices`, `update`, `delete`, `createInvoiceSettings`, `getInvoiceSettings`, `updateInvoiceSettings`, `deleteInvoiceSettings` |
 | **Transferências** | `asaas.transfers` | `createToBank`, `createToAsaas`, `getById`, `list` |
 | **Webhooks** | `asaas.webhooks` | `getPayment`, `updatePayment`, `getInvoice`, `updateInvoice` |
 | **Links de pagamento** | `asaas.paymentLinks` | `create`, `getById`, `list`, `update`, `delete`, `restore`, `addImage`, `listImages`, `getImage`, `deleteImage`, `setImageAsMain` |
-| **Informações da conta** | `asaas.account` | `getCommercialInfo`, `updateCommercialInfo`, `getFees`, `getWallets` |
+| **Informações da conta** | `asaas.account` | `getCommercialInfo`, `updateCommercialInfo`, `getFees`, `getWallets`, `getPaymentCheckoutConfig`, `updatePaymentCheckoutConfig`, `updatePaymentCheckoutConfigFormData` |
 | **Pix (chaves, QR estático, transações)** | `asaas.pix` | `createAddressKey`, `listAddressKeys`, `getAddressKeyById`, `deleteAddressKey`, `createStaticQrCode`, `listTransactions` |
-| **Recuperações (negativações)** | `asaas.dunnings` | `list`, `getById`, `cancel`, `resendDocuments`, `listHistory`, `listPartialPayments` |
+| **Recuperações (negativações)** | `asaas.dunnings` | `create`, `simulate`, `listPaymentsAvailable`, `list`, `getById`, `cancel`, `resendDocuments`, `listHistory`, `listPartialPayments` |
 | **Extrato** | `asaas.statement` | `list` |
 | **Informações fiscais** | `asaas.fiscalInfo` | `get`, `getMunicipalOptions`, `createOrUpdate` |
-| **Notas fiscais** | `asaas.invoices` | `list`, `getById`, `schedule`, `update`, `authorize` |
+| **Notas fiscais** | `asaas.invoices` | `list`, `getById`, `schedule`, `update`, `authorize`, `cancel`, `listMunicipalServices` |
 | **Pagamento de contas** | `asaas.bills` | `list`, `getById`, `simulate`, `create`, `cancel` |
 | **Contas Asaas (subcontas)** | `asaas.subAccounts` | `list`, `getById`, `create` |
-| **Consulta Serasa** | `asaas.creditBureau` | `consult` |
+| **Consulta Serasa** | `asaas.creditBureau` | `consult`, `getById`, `list` |
 
-### 📋 Planejados (futuros)
-
-- **Consulta Serasa:** recuperar consulta por ID, listar consultas (por período)
-- **Recuperações (negativações):** criar recuperação (POST multipart), simular recuperação, listar cobranças disponíveis para recuperação
-- **Informações da conta:** personalização da fatura (paymentCheckoutConfig – salvar e recuperar configurações)
-- **Notas fiscais:** cancelar nota fiscal, listar serviços municipais
-- **Assinaturas:** listar notas fiscais de uma assinatura (`/subscriptions/:id/invoices`)
 
 ## Erros
 
