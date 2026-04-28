@@ -13,7 +13,7 @@ export { BillService } from './services/bill.service.js';
 export { CreditBureauService } from './services/credit-bureau.service.js';
 export { CustomerService } from './services/customer.service.js';
 export { DunningService } from './services/dunning.service.js';
-export { FiscalInfoService } from './services/fiscal-info.service.js';
+export { FiscalInfoService, buildFiscalInfoFormData } from './services/fiscal-info.service.js';
 export { InstallmentService } from './services/installment.service.js';
 export { InvoiceService } from './services/invoice.service.js';
 export { NotificationService } from './services/notification.service.js';
@@ -83,6 +83,8 @@ export type {
   CreateOrUpdateFiscalInfoRequest,
   FiscalAuthenticationType,
   FiscalInfo,
+  FiscalInfoCertificateFile,
+  FiscalInfoMultipartFields,
   FiscalMunicipalOptions,
   SpecialTaxRegimeOption,
 } from './types/fiscal-info.js';

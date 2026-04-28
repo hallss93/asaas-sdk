@@ -123,7 +123,7 @@ Esta seção é atualizada conforme novos serviços são implementados.
 | **Pix (chaves, QR estático, transações)** | `asaas.pix` | `createAddressKey`, `listAddressKeys`, `getAddressKeyById`, `deleteAddressKey`, `createStaticQrCode`, `listTransactions` |
 | **Recuperações (negativações)** | `asaas.dunnings` | `create`, `simulate`, `listPaymentsAvailable`, `list`, `getById`, `cancel`, `resendDocuments`, `listHistory`, `listPartialPayments` |
 | **Extrato** | `asaas.statement` | `list` |
-| **Informações fiscais** | `asaas.fiscalInfo` | `get`, `getMunicipalOptions`, `createOrUpdate` |
+| **Informações fiscais** | `asaas.fiscalInfo` | `get`, `getMunicipalOptions`, `createOrUpdate`, `createOrUpdateFormData` (multipart); helper `buildFiscalInfoFormData` no pacote |
 | **Notas fiscais** | `asaas.invoices` | `list`, `getById`, `schedule`, `update`, `authorize`, `cancel`, `listMunicipalServices` |
 | **Pagamento de contas** | `asaas.bills` | `list`, `getById`, `simulate`, `create`, `cancel` |
 | **Contas Asaas (subcontas)** | `asaas.subAccounts` | `list`, `getById`, `create` |
